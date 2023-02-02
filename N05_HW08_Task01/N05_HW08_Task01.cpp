@@ -6,10 +6,22 @@
 #include <windows.h>
 #include <exception>
 
+class bad_length : public std::exception
+{
+private:
+    std::string err;
+public:
+    bad_length(std::string error) : err(error) {}
+    const char* getError()
+    {
+        return err.c_str();
+    }
+};
+
 int function(std::string str, int forbidden_length) {
     if (str.length() == forbidden_length)
     {
-        throw "Вы ввели слово запретной длины! До свидания";
+        throw bad_length("Вы ввели слово запретной длины! До свидания");
     }
     else 
     {
@@ -36,13 +48,11 @@ int main()
             std::cin >> input;
             std::cout << "Длина слова \"" << input << "\" равна " << function(input, l) << std::endl;
         }
-        catch (const char* bad_length)
+        catch (bad_length& err)
         {
-            std::cerr << bad_length << std::endl;
-            //break;
+            std::cerr << err.getError() << std::endl;
             return 0;
         }
-        
     }
     
 }
