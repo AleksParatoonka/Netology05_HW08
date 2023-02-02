@@ -14,7 +14,7 @@ public:
     Triangle( double edge_a, double edge_b, double edge_c, double angle_a, double angle_b, double angle_c, std::string name) :Shape(3) {
         this->name = name;
         Shape::print_info();
-        try {
+        //try {
             if ( (angle_a + angle_b + angle_c) != 180) {
                 throw My_Exception("сумма углов не равна 180");
 
@@ -32,19 +32,19 @@ public:
                 //this->name = name;
                 print_info();
             }
-        }
+        /*}
         catch (My_Exception& err)
         {
             std::cout << "Ошибка создания фигуры. Причина: ";
             std::cerr << err.getError() << std::endl;
             std::cout << std::endl;
-        }
+        }*/
     }
 
     Triangle(double edge_a, double edge_b, double edge_c, double angle_a, double angle_b, double angle_c) :Shape(3) {
         name = "Треугольник";
         Shape::print_info();
-        try {
+        //try {
             if ((angle_a + angle_b + angle_c) != 180) {
                 throw My_Exception("сумма углов не равна 180");
             }
@@ -62,13 +62,13 @@ public:
                 //name = "Треугольник";
                 print_info();
             }
-        }
+       /* }
         catch (My_Exception& err)
         {
             std::cout << "Ошибка создания фигуры. Причина: ";
             std::cerr << err.getError() << std::endl;
             std::cout << std::endl;
-        }
+        }*/
     }
 
     double get_edge(char x);
